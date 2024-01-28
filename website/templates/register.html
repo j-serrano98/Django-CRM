@@ -1,37 +1,28 @@
 {%  extends 'base.html' %}
-
 {% block content %}
 
+<div class="col-md-6 offset-md-3"></div>
 <h1>Register</h1>
+<br>
 
-<!-- <div class="col-md-6 offset-md-3">
-
-    {% if user.is_authenticated %}
-
-    <h1>Hello World!</h1>
-
-    {% else %}
-
-    <h1>Login</h1>
-    <br>
-    <form method="POST" action="{% url 'home' %}">
-        {% csrf_token %}
-        <form>
-            <div class="mb-3">
-              <input type="text" class="form-control" name="username" placeholder="Username" aria-describedby="emailHelp" required>
-            </div>
-            <div class="mb-3">
-              <input type="password" name="password" placeholder="Password" class="form-control" required>
-            </div>
-            <br>
-            <button type="submit" class="btn btn-secondary">Login</button>
-          </form>
-
-    </form>
-
+<form method="POST" action="">
+    {% csrf_token %}
+    {% if form.errors %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            Your Form Has Errors
+            {% for field in form %}
+                {% if field.errors %}
+                    {{ field.errors }}
+                {% endif %}
+            {% endfor %}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
     {% endif %}
+    {{ form.as_p }}
+    
+    <br>
+        <button type="submit" class="btn btn-secondary">Register</button>
 
-</div> -->
-
+</form>
 
 {% endblock content %}
